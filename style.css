@@ -35,8 +35,8 @@
   --fade-in-delay: 0.3s;
   
   /* Additional Variables for Enhanced SVGs */
-  --svg-accent: #6c63ff; /* Consistent with SVG colors */
-  --svg-accent-hover: #7f90ff; /* Hover state for SVG elements */
+  --svg-accent: #00509e; /* Consistent with SVG colors */
+  --svg-accent-hover: #0169d1; /* Hover state for SVG elements */
   --svg-background: #ffffff; /* White background for certain SVG elements */
   --svg-shadow: rgba(0, 0, 0, 0.2);
 }
