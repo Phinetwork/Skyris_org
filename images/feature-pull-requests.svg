@@ -1,0 +1,11 @@
+<!-- feature-pull-requests.svg -->
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Code Brackets -->
+  <polyline points="30,20 20,50 30,80" stroke="#6c63ff" stroke-width="4" fill="none"/>
+  <polyline points="70,20 80,50 70,80" stroke="#6c63ff" stroke-width="4" fill="none"/>
+  
+  <!-- Git Branch -->
+  <circle cx="50" cy="50" r="10" fill="#7f90ff" />
+  <line x1="50" y1="50" x2="50" y2="70" stroke="#6c63ff" stroke-width="2"/>
+  <circle cx="50" cy="70" r="5" fill="#6c63ff" />
+</svg>
