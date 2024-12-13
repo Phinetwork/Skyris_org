@@ -13,13 +13,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="nav">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
       <a href="#" class="logo-link">
         <img src="images/logo.png" alt="Skyriz Community Logo" class="logo">
       </a>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#roadmap" class="nav-link">Roadmap</a></li>
+        <li class="nav-item"><a href="#involvement" class="nav-link">Get Involved</a></li>
+        <li class="nav-item"><a href="https://skyriz.app" class="nav-button">Launch App</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
     </div>
-    <div class="hero-container">
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="container hero-container">
       <div class="hero-text">
         <h1>Skyriz Community</h1>
         <p>Join a dedicated network of contributors, supporters, and enthusiasts working together to enhance and evolve Skyriz.app — the premier platform for next-gen innovation.</p>
@@ -31,7 +47,9 @@
     </div>
   </header>
 
-  <main>
+  <!-- Main Content -->
+  <main class="container">
+    <!-- About Section -->
     <section id="about">
       <h2>About the Community</h2>
       <p>Our community at Skyriz.org is committed to advancing the Skyriz.app project through collective knowledge, open collaboration, and cutting-edge development practices. Whether you’re a developer, designer, mentor, or simply a passionate user, your voice drives the platform forward.</p>
@@ -54,6 +72,7 @@
       </div>
     </section>
 
+    <!-- Roadmap Section -->
     <section id="roadmap">
       <h2>Our Roadmap & Vision</h2>
       <p>The Skyriz Community follows a transparent, long-term roadmap. We break down complex goals into achievable milestones, ensuring continuous improvement and meaningful updates for all users.</p>
@@ -77,6 +96,7 @@
       </div>
     </section>
 
+    <!-- Involvement Section -->
     <section id="involvement">
       <h2>Get Involved</h2>
       <p>Ready to help shape the future of Skyriz.app? Here are a few ways you can participate:</p>
@@ -100,15 +120,17 @@
     </section>
   </main>
 
+  <!-- Back-to-Top Button -->
+  <button id="back-to-top" title="Back to Top">&#8679;</button>
+
+  <!-- Footer -->
   <footer>
     © <span id="year"></span> Skyriz Community. All rights reserved.
     <br>
     <a href="https://skyriz.app">Launch Skyriz.app</a>
   </footer>
 
-  <script>
-    // Update footer year dynamically
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- External JS -->
+  <script src="main.js"></script>
 </body>
 </html>
