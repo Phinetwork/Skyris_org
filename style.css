@@ -1,6 +1,6 @@
 /* Root Variables */
 :root {
-  /* App's Primary Gradient */
+  /* Primary Gradient */
   --primary-gradient: linear-gradient(135deg, #00274d, #00509e);
   
   /* Accent Colors */
@@ -14,6 +14,8 @@
   /* Text Colors */
   --text-color: #ffffff; /* White */
   --light-text: #e0e0e0; /* Softer White for Body Text */
+  --heading-text: #ffffff; /* White for Headings */
+  --subtext-color: #555555; /* Darker for Subtexts */
   
   /* Container Max Width */
   --max-width: 1200px;
@@ -27,6 +29,10 @@
   
   /* Z-Index for Navbar */
   --navbar-z: 1000;
+  
+  /* Animation Timings */
+  --fade-in-duration: 1s;
+  --fade-in-delay: 0.3s;
 }
 
 /* Reset Styles */
@@ -53,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 20px 0;
   font-weight: bold;
   text-align: center;
-  color: var(--text-color);
+  color: var(--heading-text);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for headers */
 }
 
@@ -131,6 +137,7 @@ a:hover {
   font-size: 1rem;
 }
 
+/* Navigation Button */
 .nav-button {
   background: var(--accent);
   color: #000;
@@ -152,6 +159,7 @@ a:hover {
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
+  outline: none; /* Remove default focus outline */
 }
 
 .hamburger .bar {
@@ -159,6 +167,19 @@ a:hover {
   height: 3px;
   background-color: var(--text-color);
   transition: all var(--transition-speed) ease;
+}
+
+/* Hamburger Active State Animation */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Hero Section */
@@ -323,7 +344,7 @@ section p {
 }
 
 .feature-card p {
-  color: #555555;
+  color: var(--subtext-color);
   font-size: 1rem;
   line-height: 1.7;
 }
@@ -369,14 +390,14 @@ section p {
 }
 
 .roadmap-step p {
-  color: #555555;
+  color: var(--subtext-color);
   line-height: 1.7;
 }
 
 /* Footer */
 footer {
   margin-top: auto; /* Push footer to the bottom */
-  background: #001f3f; /* Dark Blue consistent with app background */
+  background: var(--bg-secondary); /* Dark Blue consistent with app background */
   text-align: center;
   padding: 15px 20px;
   color: var(--light-text);
@@ -410,12 +431,17 @@ footer a:hover {
   box-shadow: var(--box-shadow-light);
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease, transform var(--transition-speed) ease;
+  z-index: 999;
 }
 
 #back-to-top.show {
   opacity: 1;
   visibility: visible;
+}
+
+#back-to-top:hover {
+  transform: scale(1.1);
 }
 
 /* Buttons */
@@ -457,6 +483,26 @@ button, .cta-button {
 
   .hero-illustration {
     margin-top: 40px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap {
+    padding: 0 20px;
+  }
+
+  .roadmap-step {
+    padding: 20px;
+  }
+
+  .roadmap-step h3 {
+    font-size: 1.3rem;
+  }
+
+  .roadmap-step p {
+    font-size: 0.95rem;
   }
 }
 
