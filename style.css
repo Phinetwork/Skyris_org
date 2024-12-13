@@ -33,6 +33,12 @@
   /* Animation Timings */
   --fade-in-duration: 1s;
   --fade-in-delay: 0.3s;
+  
+  /* Additional Variables for Enhanced SVGs */
+  --svg-accent: #6c63ff; /* Consistent with SVG colors */
+  --svg-accent-hover: #7f90ff; /* Hover state for SVG elements */
+  --svg-background: #ffffff; /* White background for certain SVG elements */
+  --svg-shadow: rgba(0, 0, 0, 0.2);
 }
 
 /* Reset Styles */
@@ -52,6 +58,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
 
 /* Typography */
@@ -61,6 +68,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   color: var(--heading-text);
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for headers */
+  font-family: 'Playfair Display', serif; /* Consistent with hero and section headings */
 }
 
 p {
@@ -312,6 +320,7 @@ section p {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease forwards;
+  position: relative; /* For tooltip positioning */
 }
 
 .feature-card:nth-child(1) {
@@ -331,22 +340,53 @@ section p {
   box-shadow: var(--box-shadow-deep);
 }
 
+/* Feature Icon Enhancements */
 .feature-icon {
-  width: 60px;
+  width: 80px; /* Increased size for better visibility */
   height: auto;
   margin-bottom: 20px;
+  transition: transform var(--transition-speed) ease;
 }
 
+.feature-icon:hover {
+  transform: scale(1.1); /* Subtle zoom on hover */
+}
+
+/* Feature Card Headings */
 .feature-card h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--accent);
 }
 
+/* Feature Card Descriptions */
 .feature-card p {
   color: var(--subtext-color);
   font-size: 1rem;
   line-height: 1.7;
+}
+
+/* Tooltips for Feature Cards */
+.feature-card .tooltip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+  pointer-events: none;
+}
+
+/* Show Tooltip on Hover */
+.feature-card:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Roadmap */
@@ -448,6 +488,13 @@ footer a:hover {
 button, .cta-button {
   display: inline-block;
   cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+button:focus, .cta-button:focus {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 2px;
 }
 
 /* Responsive Adjustments */
@@ -529,4 +576,16 @@ button, .cta-button {
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Additional Animations for Enhanced SVGs */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

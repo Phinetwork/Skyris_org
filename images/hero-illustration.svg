@@ -1,24 +1,91 @@
-<!-- hero-illustration.svg -->
+<!-- hero-illustration-advanced.svg -->
 <svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient Circle with Radial Gradient for Depth -->
+  <defs>
+    <radialGradient id="radialGrad" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#00509e; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00274d; stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Additional Linear Gradient for Abstract Elements -->
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffcc00; stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#ffcc00; stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Shadow Filter for Depth -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Glow Effect for Central Icon -->
+    <filter id="glow" height="300%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick"/>
+      <feGaussianBlur in="thick" stdDeviation="3" result="blurred"/>
+      <feMerge>
+        <feMergeNode in="blurred"/>
+        <feMergeNode in="blurred"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
   <!-- Background Circle -->
-  <circle cx="400" cy="300" r="300" fill="url(#grad1)" />
+  <circle cx="400" cy="300" r="300" fill="url(#radialGrad)" />
   
-  <!-- Abstract Lines -->
-  <line x1="100" y1="500" x2="700" y2="100" stroke="#ffffff" stroke-width="2" stroke-opacity="0.3"/>
-  <line x1="700" y1="500" x2="100" y2="100" stroke="#ffffff" stroke-width="2" stroke-opacity="0.3"/>
-  
-  <!-- Central Icon -->
-  <g>
-    <circle cx="400" cy="300" r="80" fill="#ffffff" opacity="0.8"/>
-    <path d="M400 220 L430 340 L400 300 L370 340 Z" fill="#6c63ff"/>
-    <circle cx="400" cy="300" r="20" fill="#ffffff"/>
+  <!-- Abstract Particle Effects -->
+  <g opacity="0.2">
+    <!-- Multiple Small Circles for Particle Effects -->
+    <circle cx="150" cy="450" r="5" fill="#ffffff">
+      <animate attributeName="r" from="5" to="8" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.3" to="0.8" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="650" cy="150" r="5" fill="#ffffff">
+      <animate attributeName="r" from="5" to="8" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.3" to="0.8" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="300" r="10" fill="#ffffff">
+      <animate attributeName="r" from="10" to="15" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.3" to="0.7" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <!-- Add more particles as needed -->
   </g>
   
-  <!-- Gradient Definition -->
-  <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7f90ff;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+  <!-- Abstract Lines with Enhanced Gradients and Animations -->
+  <g stroke="url(#grad2)" stroke-width="2" opacity="0.4">
+    <line x1="100" y1="500" x2="700" y2="100">
+      <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="5s" repeatCount="indefinite" />
+    </line>
+    <line x1="700" y1="500" x2="100" y2="100">
+      <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" dur="5s" repeatCount="indefinite" />
+    </line>
+  </g>
+  
+  <!-- Central Icon with Enhanced Design and Glow Effect -->
+  <g filter="url(#glow)">
+    <!-- Outer Circle with Shadow -->
+    <circle cx="400" cy="300" r="100" fill="#ffffff" opacity="0.8" filter="url(#shadow)" />
+    
+    <!-- Abstract Geometric Shape -->
+    <path d="M400 200 L450 400 L400 350 L350 400 Z" fill="#00274d">
+      <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="10s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Inner Central Circle -->
+    <circle cx="400" cy="300" r="30" fill="#ffffff">
+      <animate attributeName="r" values="30;35;30" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="1;0.7;1" dur="4s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Dynamic Text Path (Optional) -->
+  <path id="textPath" fill="none" d="M 200,500 Q 400,450 600,500" />
+  
+  <!-- Text Along Path -->
+  <text font-size="24" fill="#ffffff" opacity="0.6">
+    <textPath href="#textPath" startOffset="0%">
+      Empowering the Skyriz Community
+      <animate attributeName="startOffset" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
+    </textPath>
+  </text>
 </svg>

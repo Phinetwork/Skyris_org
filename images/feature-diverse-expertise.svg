@@ -1,11 +1,83 @@
-<!-- feature-diverse-expertise.svg -->
-<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Gear -->
-  <g>
-    <circle cx="50" cy="50" r="20" fill="#6c63ff" />
-    <path d="M50 30 V20 M50 80 V70 M30 50 H20 M80 50 H70 M35 35 L25 25 M75 75 L65 65 M35 65 L25 75 M75 25 L65 35" stroke="#ffffff" stroke-width="2"/>
+<!-- feature-diverse-expertise-advanced.svg -->
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Diverse Expertise Icon</title>
+  <desc id="desc">An advanced illustration representing diverse expertise with interconnected gears and various tools symbolizing different skills.</desc>
+  
+  <!-- Definitions for Gradients and Filters -->
+  <defs>
+    <!-- Radial Gradient for Gear -->
+    <radialGradient id="gearGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#6c63ff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d3d5c; stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Drop Shadow Filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- Glow Effect for Tools -->
+    <filter id="glow" height="300%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick"/>
+      <feGaussianBlur in="thick" stdDeviation="3" result="blurred"/>
+      <feMerge>
+        <feMergeNode in="blurred"/>
+        <feMergeNode in="blurred"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Animated Dash Array -->
+    <animateTransform id="lineAnimate" attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite" />
+  </defs>
+  
+  <!-- Background Gear -->
+  <g filter="url(#dropShadow)">
+    <circle cx="60" cy="60" r="30" fill="url(#gearGrad)" />
+    <!-- Gear Teeth -->
+    <g stroke="#ffffff" stroke-width="2" stroke-linecap="round">
+      <!-- Creating gear teeth by rotating lines around the center -->
+      <line x1="60" y1="30" x2="60" y2="20" />
+      <line x1="85.36" y1="34.64" x2="92.88" y2="27.12" />
+      <line x1="90" y1="60" x2="100" y2="60" />
+      <line x1="85.36" y1="85.36" x2="92.88" y2="92.88" />
+      <line x1="60" y1="90" x2="60" y2="100" />
+      <line x1="34.64" y1="85.36" x2="27.12" y2="92.88" />
+      <line x1="20" y1="60" x2="10" y2="60" />
+      <line x1="34.64" y1="34.64" x2="27.12" y2="27.12" />
+    </g>
   </g>
   
-  <!-- Tooltip (optional) -->
-  <!-- You can add more symbols like a wrench or a brush for more diversity -->
+  <!-- Central Tools with Glow Effect -->
+  <g filter="url(#glow)">
+    <!-- Wrench -->
+    <g transform="translate(40, 40) rotate(-30)">
+      <rect x="0" y="0" width="30" height="6" fill="#ffffff" />
+      <rect x="25" y="-5" width="10" height="16" fill="#ffffff" />
+      <circle cx="35" cy="3" r="3" fill="#6c63ff" />
+    </g>
+    
+    <!-- Brush -->
+    <g transform="translate(80, 80) rotate(30)">
+      <rect x="0" y="0" width="30" height="6" fill="#ffffff" />
+      <polygon points="25,0 35,5 25,10" fill="#ffffff" />
+      <circle cx="35" cy="5" r="3" fill="#6c63ff" />
+    </g>
+  </g>
+  
+  <!-- Additional Decorative Elements -->
+  <g opacity="0.3">
+    <!-- Dotted Circle for Depth -->
+    <circle cx="60" cy="60" r="40" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
+  </g>
+  
+  <!-- Animated Connecting Lines -->
+  <g stroke="#6c63ff" stroke-width="2" stroke-linecap="round">
+    <line x1="60" y1="60" x2="40" y2="40" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="4s" repeatCount="indefinite" />
+    </line>
+    <line x1="60" y1="60" x2="80" y2="80" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="4s" repeatCount="indefinite" />
+    </line>
+  </g>
 </svg>
