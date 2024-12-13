@@ -15,7 +15,7 @@
   --text-color: #ffffff; /* White */
   --light-text: #e0e0e0; /* Softer White for Body Text */
   --heading-text: #ffffff; /* White for Headings */
-  --subtext-color: #f8f8f8; /* Darker for Subtexts */
+  --subtext-color: #828282; /* Darker for Subtexts */
   
   /* Container Max Width */
   --max-width: 1200px;
