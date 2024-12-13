@@ -4,8 +4,8 @@
   --primary-gradient: linear-gradient(135deg, #00274d, #00509e);
   
   /* Accent Colors */
-  --accent: #ffcc00; /* Bright Yellow */
-  --accent-hover: #ffd633; /* Brighter Yellow on Hover */
+  --accent: #0091ff; /* Bright Yellow */
+  --accent-hover: #33b1ff; /* Brighter Yellow on Hover */
   
   /* Background Colors */
   --bg-color: #00274d; /* Dark Blue */
@@ -15,7 +15,7 @@
   --text-color: #ffffff; /* White */
   --light-text: #e0e0e0; /* Softer White for Body Text */
   --heading-text: #ffffff; /* White for Headings */
-  --subtext-color: #555555; /* Darker for Subtexts */
+  --subtext-color: #f8f8f8; /* Darker for Subtexts */
   
   /* Container Max Width */
   --max-width: 1200px;
