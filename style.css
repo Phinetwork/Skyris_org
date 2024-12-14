@@ -254,48 +254,30 @@ header {
 }
 
 .cta-button {
-  background: var(--accent);
-  color: #000;
+  background: var(--accent); /* Background color */
+  color: #000; /* Button text color */
   font-weight: 600;
   padding: 15px 30px;
   text-decoration: none;
-  border-radius: 30px;
+  border-radius: 30px; /* Rounded corners */
   transition: background var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, filter 0.4s ease;
-  animation: slideInLeft 1s ease forwards, glowPulse 3s infinite ease-in-out; /* Added glow pulse effect */
+  animation: slideInLeft 1s ease forwards, glowPulse 3s infinite ease-in-out; /* Glow animation */
   opacity: 0;
   animation-delay: 0.6s;
-  position: relative; /* For pseudo-element positioning */
-  overflow: hidden; /* Ensures inner effects don’t overflow */
+  position: relative;
+  border: none; /* Ensure no border is present */
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4); /* Default shadow */
 }
 
 .cta-button:hover {
-  background: var(--accent-hover);
-  transform: translateY(-3px) scale(1.05); /* Subtle hover lift and scale */
-  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5); /* Enhanced glow shadow */
-  filter: brightness(1.2); /* Brighter on hover */
+  background: var(--accent-hover); /* Hover background color */
+  transform: translateY(-3px) scale(1.05); /* Lift and scale on hover */
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5); /* Enhanced glow shadow on hover */
+  filter: brightness(1.2); /* Slightly brighter on hover */
 }
 
-/* Glow Effect for Button */
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
-  opacity: 0.2;
-  transform: rotate(45deg);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  z-index: 1; /* Behind the button text */
-}
-
-.cta-button:hover::before {
-  opacity: 0.4;
-  transform: rotate(45deg) translateX(20px); /* Smooth sweeping effect */
-}
-
-/* Subtle Glow Pulse Animation */
+/* Glow Pulse Animation */
 @keyframes glowPulse {
   0%, 100% {
     box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2);
