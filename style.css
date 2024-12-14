@@ -168,13 +168,28 @@ a:hover {
   cursor: pointer;
   gap: 4px;
   outline: none; /* Remove default focus outline */
+  background: transparent; /* Ensure no unwanted background */
+  border: none; /* Clean appearance */
+  position: relative; /* For glow effect */
+  transition: all var(--transition-speed) ease;
+}
+
+.hamburger:hover {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); /* Subtle glowing effect on hover */
+  border-radius: 10px; /* Rounded corners for a modern touch */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .hamburger .bar {
   width: 25px;
   height: 3px;
   background-color: var(--text-color);
-  transition: all var(--transition-speed) ease;
+  border-radius: 2px; /* Rounded ends for bars */
+  transition: all var(--transition-speed) ease, background-color var(--transition-speed);
+}
+
+.hamburger:hover .bar {
+  background-color: var(--accent); /* Change color to accent on hover */
 }
 
 /* Hamburger Active State Animation */
@@ -188,6 +203,10 @@ a:hover {
 
 .hamburger.active .bar:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.hamburger.active {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.7); /* More prominent glow when active */
 }
 
 /* Hero Section */
@@ -241,16 +260,49 @@ header {
   padding: 15px 30px;
   text-decoration: none;
   border-radius: 30px;
-  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  animation: slideInLeft 1s ease forwards;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, filter 0.4s ease;
+  animation: slideInLeft 1s ease forwards, glowPulse 3s infinite ease-in-out; /* Added glow pulse effect */
   opacity: 0;
   animation-delay: 0.6s;
+  position: relative; /* For pseudo-element positioning */
+  overflow: hidden; /* Ensures inner effects don’t overflow */
 }
 
 .cta-button:hover {
   background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transform: translateY(-3px) scale(1.05); /* Subtle hover lift and scale */
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5); /* Enhanced glow shadow */
+  filter: brightness(1.2); /* Brighter on hover */
+}
+
+/* Glow Effect for Button */
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  opacity: 0.2;
+  transform: rotate(45deg);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1; /* Behind the button text */
+}
+
+.cta-button:hover::before {
+  opacity: 0.4;
+  transform: rotate(45deg) translateX(20px); /* Smooth sweeping effect */
+}
+
+/* Subtle Glow Pulse Animation */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4), 0 6px 6px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.6), 0 10px 10px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* Hero Illustration Container */
@@ -602,18 +654,91 @@ footer a:hover {
   transform: scale(1.1);
 }
 
-/* Buttons */
-button, .cta-button {
+/* Bottom Call-to-Action Button */
+.cta-button-primary {
   display: inline-block;
-  cursor: pointer;
+  background: var(--accent);
+  color: #000;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 18px 36px;
+  text-decoration: none;
+  border-radius: 40px;
   border: none;
-  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.5); /* Initial glow */
+  transition: all 0.4s ease; /* Smooth transitions */
+  position: relative; /* For pseudo-elements */
+  overflow: hidden; /* Prevent effects from overflowing */
+  z-index: 1; /* Ensure button stays on top */
 }
 
-button:focus, .cta-button:focus {
-  outline: 2px solid var(--accent-hover);
-  outline-offset: 2px;
+/* Hover State */
+.cta-button-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px) scale(1.1); /* Lift and scale effect */
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.8); /* Enhanced glow */
+  filter: brightness(1.2); /* Slightly brighter on hover */
 }
+
+/* Focus State */
+.cta-button-primary:focus {
+  outline: 4px solid var(--accent-hover);
+  outline-offset: 4px;
+}
+
+/* Glow Animation */
+.cta-button-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cta-button-primary:hover::before {
+  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(1.5); /* Expanding glow */
+}
+
+/* Animated Edge Glow */
+.cta-button-primary::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 40px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  z-index: -1; /* Behind the button */
+  transition: all 0.4s ease;
+  opacity: 0.5;
+}
+
+.cta-button-primary:hover::after {
+  opacity: 1;
+  transform: scale(1.05); /* Slight edge expansion */
+  background: linear-gradient(135deg, #33b1ff, #a0e4ff); /* Enhanced glow color */
+}
+
+/* Subtle Glow Pulsing */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 15px 30px rgba(59, 130, 246, 0.7);
+  }
+}
+
+.cta-button-primary {
+  animation: pulseGlow 2.5s infinite ease-in-out; /* Constant subtle glow pulsing */
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
