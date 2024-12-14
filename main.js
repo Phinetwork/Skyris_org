@@ -229,18 +229,26 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('scroll', revealCTA);
     }
 
-    /* ===============================
-       9. Optional Smooth Scroll to CTA Section
-       =============================== */
-    const ctaButton = document.querySelector('.cta-button-primary');
+/* ===============================
+   9. Optional Smooth Scroll to CTA Section
+   =============================== */
+   const ctaButton = document.querySelector('.cta-button-primary');
 
-    if (ctaButton) {
-      ctaButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const ctaTarget = document.querySelector('.cta-section');
-        if (ctaTarget) {
-          smoothScrollTo('.cta-section', 1000); // Smooth scroll to the CTA Section
-        }
-      });
-    }
+   if (ctaButton) {
+     ctaButton.addEventListener('click', (e) => {
+       const target = ctaButton.getAttribute('href');
+   
+       // Check if it's an external URL (starts with "http" or "https")
+       if (target.startsWith('http')) {
+         return; // Allow the browser to follow the link
+       }
+   
+       // Otherwise, prevent default behavior and smooth scroll
+       e.preventDefault();
+       const ctaTarget = document.querySelector(target);
+       if (ctaTarget) {
+         smoothScrollTo(target, 1000); // Smooth scroll to the CTA Section
+       }
+     });
+   }   
 });
