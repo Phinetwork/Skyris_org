@@ -253,6 +253,13 @@ header {
   animation-delay: 0.3s;
 }
 
+.cta-button-container {
+  display: flex; /* Enables flexbox for centering */
+  justify-content: center; /* Centers horizontally */
+  margin-top: 20px; /* Adds space above the button */
+  text-align: center; /* Ensures alignment with the text above */
+}
+
 .cta-button {
   background: var(--accent); /* Background color */
   color: #000; /* Button text color */
