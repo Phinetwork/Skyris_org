@@ -38,8 +38,8 @@
     </radialGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="120" height="120" fill="#1f2937" />
+  <!-- Optional Background: Change to 'white' or remove for transparency -->
+  <rect width="120" height="120" fill="white" />
 
   <!-- Animated Ripple Effect -->
   <g>

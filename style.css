@@ -1,81 +1,63 @@
 /* Root Variables */
 :root {
-  /* Primary Gradient */
   --primary-gradient: linear-gradient(135deg, #00274d, #00509e);
-  
-  /* Accent Colors */
-  --accent: #0091ff; /* Bright Yellow */
-  --accent-hover: #33b1ff; /* Brighter Yellow on Hover */
-  
-  /* Background Colors */
-  --bg-color: #00274d; /* Dark Blue */
-  --bg-secondary: #00509e; /* Secondary Dark Blue */
-  
-  /* Text Colors */
-  --text-color: #ffffff; /* White */
-  --light-text: #e0e0e0; /* Softer White for Body Text */
-  --heading-text: #ffffff; /* White for Headings */
-  --subtext-color: #828282; /* Darker for Subtexts */
-  
-  /* Container Max Width */
-  --max-width: 1200px;
-  
-  /* Box Shadows */
+  --accent: #0091ff; /* Bright Blue */
+  --accent-hover: #33b1ff; /* Brighter Blue on Hover */
+  --bg-color: #ffffff; /* White Background */
+  --bg-secondary: #f3f4f6; /* Light Gray */
+  --text-color: #1e293b; /* Dark Text */
+  --light-text: #475569; /* Softer Dark Gray */
+  --heading-text: #0f172a; /* Dark Heading Text */
+  --subtext-color: #64748b; /* Subtle Gray */
+  --svg-accent: #00509e; /* Consistent SVG Colors */
+  --svg-accent-hover: #0169d1;
+  --svg-shadow: rgba(0, 0, 0, 0.1); /* Subtle SVG Shadows */
   --box-shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --box-shadow-deep: 0 6px 20px rgba(0, 0, 0, 0.4);
-  
-  /* Transition Speed */
-  --transition-speed: 0.3s;
-  
-  /* Z-Index for Navbar */
-  --navbar-z: 1000;
-  
-  /* Animation Timings */
+  --box-shadow-deep: 0 6px 20px rgba(0, 0, 0, 0.3);
+  --transition-speed: 0.3s; /* Faster Transitions */
   --fade-in-duration: 1s;
   --fade-in-delay: 0.3s;
-  
-  /* Additional Variables for Enhanced SVGs */
-  --svg-accent: #00509e; /* Consistent with SVG colors */
-  --svg-accent-hover: #0169d1; /* Hover state for SVG elements */
-  --svg-background: #ffffff; /* White background for certain SVG elements */
-  --svg-shadow: rgba(0, 0, 0, 0.2);
+  --cta-glow: 0 0 15px rgba(59, 130, 246, 0.8); /* CTA Glow */
+  --navbar-z: 1000;
 }
 
-/* Reset Styles */
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body Styling */
+/* General Body */
 body {
   font-family: 'Inter', sans-serif;
   color: var(--text-color);
   background: var(--bg-color);
-  line-height: 1.6;
+  line-height: 1.7;
   overflow-x: hidden;
+  min-height: 100vh;
+  scroll-behavior: smooth; /* Smooth Scrolling */
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0;
   font-weight: bold;
   text-align: center;
   color: var(--heading-text);
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for headers */
-  font-family: 'Playfair Display', serif; /* Consistent with hero and section headings */
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle Shadow */
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  font-size: 3rem;
 }
 
 p {
   line-height: 1.8;
   font-size: 1rem;
-  margin: 10px 0;
-  text-align: center;
+  margin: 15px 0;
   color: var(--light-text);
 }
 
@@ -83,12 +65,47 @@ p {
 a {
   color: var(--accent);
   text-decoration: none;
-  transition: color var(--transition-speed) ease;
+  transition: color var(--transition-speed), transform var(--transition-speed);
 }
 
 a:hover {
   color: var(--accent-hover);
-  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+/* Buttons */
+button, .cta-button {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 25px;
+  transition: all var(--transition-speed) ease;
+  box-shadow: var(--box-shadow-light);
+  cursor: pointer;
+}
+
+button:hover, .cta-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--cta-glow);
+}
+
+/* CTA Buttons with Glow */
+.cta-button-primary {
+  background: var(--accent);
+  font-size: 1.2rem;
+  padding: 15px 35px;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: var(--cta-glow);
+  animation: pulse 2.5s infinite;
+}
+
+.cta-button-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+  transform: translateY(-3px);
 }
 
 /* Containers */
@@ -194,44 +211,27 @@ a:hover {
 header {
   background: var(--primary-gradient);
   color: var(--text-color);
-  padding-top: 80px; /* Space for navbar */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex: 1;
-  padding: 60px 20px;
-  flex-wrap: wrap;
-  animation: fadeIn 1s ease forwards;
-  opacity: 0;
-}
-
-.hero-text {
-  max-width: 600px;
+  padding-top: 60px;
+  text-align: center;
 }
 
 .hero-text h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   margin-bottom: 20px;
-  letter-spacing: 1px;
-  animation: slideInLeft 1s ease forwards;
+  animation: fadeInDown var(--fade-in-duration) ease forwards;
   opacity: 0;
 }
 
 .hero-text p {
   font-size: 1.25rem;
   margin-bottom: 40px;
-  color: rgba(255, 255, 255, 0.9);
-  animation: slideInLeft 1s ease forwards;
+  animation: fadeInUp var(--fade-in-duration) ease forwards;
   opacity: 0;
-  animation-delay: 0.3s;
+  animation-delay: var(--fade-in-delay);
 }
 
 .cta-button {
@@ -390,6 +390,74 @@ section p {
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--box-shadow-deep);
+}
+
+/* Interactive Effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: var(--box-shadow-light);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: var(--box-shadow-light);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+}
+
+/* Call-to-Action Section */
+.cta-section {
+  background: var(--primary-gradient);
+  color: var(--text-color);
+  text-align: center;
+  padding: 80px 20px;
+  margin-top: 40px;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp var(--fade-in-duration) ease forwards;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--light-text);
+}
+
+.cta-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 /* Feature Icon Enhancements */
