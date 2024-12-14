@@ -1,56 +1,94 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background Gradient -->
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Background -->
   <defs>
-    <radialGradient id="radialBg" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" style="stop-color:#1e3a8a; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f172a; stop-opacity:1" />
+    <!-- Animated Gradient Background -->
+    <radialGradient id="dynamicBackground" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" style="stop-color:#1e40af; stop-opacity:1">
+        <animate attributeName="stop-color" values="#1e40af; #3b82f6; #1e40af" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" style="stop-color:#0f172a; stop-opacity:1">
+        <animate attributeName="stop-color" values="#0f172a; #1e293b; #0f172a" dur="8s" repeatCount="indefinite" />
+      </stop>
     </radialGradient>
-    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#00c6ff; stop-opacity:0.8" />
-      <stop offset="100%" style="stop-color:#0072ff; stop-opacity:0" />
+
+    <!-- Particle Trail Gradient -->
+    <linearGradient id="trailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4ff; stop-opacity:0" />
     </linearGradient>
-    <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
+
+    <!-- Glow Filter -->
+    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blurred" />
       <feMerge>
         <feMergeNode in="blurred" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+
+    <!-- Ripple Effect -->
+    <radialGradient id="rippleGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#ffffff; stop-opacity:0" />
+    </radialGradient>
   </defs>
-  
-  <!-- Background -->
-  <rect width="800" height="600" fill="url(#radialBg)" />
 
-  <!-- Glowing Particles -->
-  <g opacity="0.6">
-    <circle cx="150" cy="450" r="6" fill="#ffffff" filter="url(#blurGlow)">
-      <animate attributeName="r" values="6;10;6" dur="2.5s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="650" cy="150" r="6" fill="#ffffff" filter="url(#blurGlow)">
-      <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite" />
-    </circle>
-    <circle cx="400" cy="300" r="10" fill="#00d4ff" filter="url(#blurGlow)">
-      <animate attributeName="r" values="10;15;10" dur="2s" repeatCount="indefinite" />
+  <!-- Background Circle -->
+  <rect width="800" height="600" fill="url(#dynamicBackground)" />
+
+  <!-- Central Glowing Core -->
+  <g filter="url(#glowFilter)">
+    <circle cx="400" cy="300" r="80" fill="#ffffff" opacity="0.6" />
+    <circle cx="400" cy="300" r="40" fill="#3b82f6">
+      <animate attributeName="r" values="40;50;40" dur="4s" repeatCount="indefinite" />
     </circle>
   </g>
 
-  <!-- Central Icon -->
-  <g filter="url(#blurGlow)">
-    <circle cx="400" cy="300" r="100" fill="#ffffff" opacity="0.1" />
-    <path d="M400 200 L450 400 L400 350 L350 400 Z" fill="#004aad" opacity="0.9">
-      <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="8s" repeatCount="indefinite" />
-    </path>
-    <circle cx="400" cy="300" r="40" fill="#0077ff" />
+  <!-- Ripple Waves -->
+  <g>
+    <circle cx="400" cy="300" r="120" fill="url(#rippleGradient)" opacity="0.5">
+      <animate attributeName="r" from="120" to="300" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.5; 0" dur="6s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="300" r="120" fill="url(#rippleGradient)" opacity="0.5">
+      <animate attributeName="r" from="120" to="300" dur="6s" begin="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.5; 0" dur="6s" begin="3s" repeatCount="indefinite" />
+    </circle>
   </g>
 
-  <!-- Pulsating Wave -->
-  <path d="M0 300 Q200 400 400 300 T800 300" fill="none" stroke="url(#waveGrad)" stroke-width="2" opacity="0.8">
-    <animateTransform attributeName="transform" type="translate" from="0 0" to="0 20" dur="4s" repeatCount="indefinite" />
-  </path>
+  <!-- Particle Trails -->
+  <g>
+    <circle cx="200" cy="400" r="4" fill="url(#trailGradient)">
+      <animateMotion dur="6s" repeatCount="indefinite" keyTimes="0; 1">
+        <mpath xlink:href="#particlePath1" />
+      </animateMotion>
+    </circle>
+    <circle cx="600" cy="200" r="4" fill="url(#trailGradient)">
+      <animateMotion dur="6s" repeatCount="indefinite" keyTimes="0; 1">
+        <mpath xlink:href="#particlePath2" />
+      </animateMotion>
+    </circle>
+  </g>
 
-  <!-- Animated Text -->
-  <text x="50%" y="90%" text-anchor="middle" fill="#ffffff" font-size="24" opacity="0.9">
-    A New Dimension of Visual Excellence
-    <animate attributeName="opacity" values="0.5;1;0.5" dur="6s" repeatCount="indefinite" />
+  <!-- Paths for Particle Movement -->
+  <defs>
+    <path id="particlePath1" d="M200,400 Q400,200 600,400" fill="none" stroke="none" />
+    <path id="particlePath2" d="M600,200 Q400,400 200,200" fill="none" stroke="none" />
+  </defs>
+
+  <!-- Rotating Geometric Shapes -->
+  <g>
+    <polygon points="400,240 440,360 360,360" fill="#0ea5e9" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0 400 300" to="360 400 300" dur="10s" repeatCount="indefinite" />
+    </polygon>
+    <polygon points="400,280 420,330 380,330" fill="#3b82f6" opacity="0.6">
+      <animateTransform attributeName="transform" type="rotate" from="360 400 300" to="0 400 300" dur="8s" repeatCount="indefinite" />
+    </polygon>
+  </g>
+
+  <!-- Floating Text -->
+  <text x="50%" y="90%" text-anchor="middle" fill="#ffffff" font-size="28" font-weight="bold" opacity="0.8">
+    Welcome to the Next Dimension
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="6s" repeatCount="indefinite" />
   </text>
 </svg>
