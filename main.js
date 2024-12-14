@@ -173,10 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
        7. Optional: Typing Animation for Hero Text
        =============================== */
   
-    // Ensure that the hero-text paragraph contains a span with class 'typed-text'
-    // Example HTML:
-    // <p><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
-  
     const typedTextSpan = document.querySelector(".typed-text");
     const cursorSpan = document.querySelector(".cursor");
   
@@ -215,5 +211,36 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-  });
-  
+    /* ===============================
+       8. Scroll Reveal for Call-to-Action Section
+       =============================== */
+    const ctaSection = document.querySelector('.cta-section');
+
+    if (ctaSection) {
+      const revealCTA = () => {
+        const ctaPosition = ctaSection.getBoundingClientRect().top + window.pageYOffset - window.innerHeight * 0.8;
+
+        if (window.pageYOffset > ctaPosition) {
+          ctaSection.classList.add('active');
+        }
+      };
+
+      // Attach the scroll event for revealing the CTA Section
+      window.addEventListener('scroll', revealCTA);
+    }
+
+    /* ===============================
+       9. Optional Smooth Scroll to CTA Section
+       =============================== */
+    const ctaButton = document.querySelector('.cta-button-primary');
+
+    if (ctaButton) {
+      ctaButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const ctaTarget = document.querySelector('.cta-section');
+        if (ctaTarget) {
+          smoothScrollTo('.cta-section', 1000); // Smooth scroll to the CTA Section
+        }
+      });
+    }
+});
