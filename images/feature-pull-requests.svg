@@ -1,13 +1,14 @@
-<!-- feature-pull-requests-advanced.svg -->
 <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Pull Requests Icon</title>
   <desc id="desc">An advanced illustration representing pull requests with dynamic code brackets, interactive Git branches, and modern design aesthetics symbolizing collaboration and merging.</desc>
   
   <!-- Definitions for Gradients, Filters, and Markers -->
   <defs>
-    <!-- Linear Gradient for Code Brackets -->
+    <!-- Animated Gradient for Code Brackets -->
     <linearGradient id="bracketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6c63ff; stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#6c63ff; stop-opacity:1">
+        <animate attributeName="stop-color" values="#6c63ff;#a0abff;#6c63ff" dur="4s" repeatCount="indefinite" />
+      </stop>
       <stop offset="100%" style="stop-color:#7f90ff; stop-opacity:1" />
     </linearGradient>
     
@@ -17,19 +18,14 @@
       <stop offset="100%" style="stop-color:#7f90ff; stop-opacity:1" />
     </radialGradient>
     
-    <!-- Drop Shadow Filter -->
-    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
-    </filter>
-    
-    <!-- Glow Filter for Highlights -->
+    <!-- Glow Effect for Highlights -->
     <filter id="glow" height="300%">
-      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick"/>
-      <feGaussianBlur in="thick" stdDeviation="3" result="blurred"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick" />
+      <feGaussianBlur in="thick" stdDeviation="3" result="blurred" />
       <feMerge>
-        <feMergeNode in="blurred"/>
-        <feMergeNode in="blurred"/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="blurred" />
+        <feMergeNode in="blurred" />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
     
@@ -37,67 +33,53 @@
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="url(#branchGrad)" />
     </marker>
-    
-    <!-- Animated Code Bracket -->
-    <symbol id="codeBracket" viewBox="0 0 20 60">
-      <polyline points="20,10 10,30 20,50" stroke="url(#bracketGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <animate attributeName="stroke-dasharray" values="0,100;100,0;0,100" dur="6s" repeatCount="indefinite" />
-      </polyline>
-    </symbol>
-    
-    <!-- Branch Circle Symbol -->
-    <symbol id="branchCircle" viewBox="0 0 20 20">
-      <circle cx="10" cy="10" r="10" fill="url(#branchGrad)" />
-    </symbol>
-    
-    <!-- Line Symbol with Animated Dash Array -->
-    <symbol id="branchLine" viewBox="0 0 100 100">
-      <line x1="50" y1="50" x2="50" y2="90" stroke="url(#bracketGrad)" stroke-width="4" stroke-linecap="round">
-        <animate attributeName="stroke-dasharray" values="0,100;100,0;0,100" dur="5s" repeatCount="indefinite" />
-      </line>
-    </symbol>
   </defs>
   
   <!-- Background Circle for Depth -->
-  <circle cx="60" cy="60" r="55" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+  <circle cx="60" cy="60" r="55" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2" />
   
-  <!-- Code Brackets Group with Glow Effect -->
+  <!-- Animated Code Brackets -->
   <g filter="url(#glow)">
-    <!-- Left Code Bracket -->
-    <use href="#codeBracket" x="15" y="30" />
+    <!-- Left Bracket -->
+    <polyline points="20,30 10,60 20,90" stroke="url(#bracketGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,100;100,0;0,100" dur="6s" repeatCount="indefinite" />
+    </polyline>
     
-    <!-- Right Code Bracket -->
-    <use href="#codeBracket" x="85" y="30" transform="scale(-1,1) translate(-100,0)" />
+    <!-- Right Bracket -->
+    <polyline points="100,30 110,60 100,90" stroke="url(#bracketGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <animate attributeName="stroke-dasharray" values="0,100;100,0;0,100" dur="6s" repeatCount="indefinite" />
+    </polyline>
   </g>
   
-  <!-- Git Branch Group with Animated Elements -->
+  <!-- Git Branches with Interactive Elements -->
   <g filter="url(#glow)">
     <!-- Central Git Branch Circle -->
-    <use href="#branchCircle" x="50" y="50" width="20" height="20" filter="url(#dropShadow)" />
+    <circle cx="60" cy="60" r="8" fill="url(#branchGrad)" />
     
-    <!-- Vertical Branch Line -->
-    <use href="#branchLine" x="50" y="50" />
-    
-    <!-- Bottom Branch Circle -->
-    <use href="#branchCircle" x="50" y="90" width="10" height="10" fill="#6c63ff" />
-  </g>
-  
-  <!-- Symbolic Elements Representing Collaboration and Merging -->
-  <g>
-    <!-- Overlaying Circles to Represent Merging Points -->
-    <circle cx="50" cy="70" r="5" fill="#ffffff" opacity="0.8">
+    <!-- Top Branch Circle -->
+    <circle cx="60" cy="30" r="5" fill="#ffffff" opacity="0.8">
       <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite" />
       <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
     </circle>
-    <circle cx="50" cy="70" r="7" fill="#6c63ff" opacity="0.6">
-      <animate attributeName="r" values="7;9;7" dur="3s" repeatCount="indefinite" />
-      <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" />
+    
+    <!-- Bottom Branch Circle -->
+    <circle cx="60" cy="90" r="5" fill="#ffffff" opacity="0.8">
+      <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
     </circle>
+    
+    <!-- Connecting Lines -->
+    <line x1="60" y1="60" x2="60" y2="30" stroke="url(#bracketGrad)" stroke-width="4" stroke-linecap="round">
+      <animate attributeName="stroke-dasharray" values="0,60;60,0;0,60" dur="5s" repeatCount="indefinite" />
+    </line>
+    <line x1="60" y1="60" x2="60" y2="90" stroke="url(#bracketGrad)" stroke-width="4" stroke-linecap="round">
+      <animate attributeName="stroke-dasharray" values="0,60;60,0;0,60" dur="5s" repeatCount="indefinite" />
+    </line>
   </g>
   
-  <!-- Additional Decorative Elements -->
+  <!-- Decorative Dotted Circles -->
   <g opacity="0.2">
-    <circle cx="60" cy="60" r="50" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
-    <circle cx="60" cy="60" r="60" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
+    <circle cx="60" cy="60" r="50" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+    <circle cx="60" cy="60" r="60" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5" />
   </g>
 </svg>

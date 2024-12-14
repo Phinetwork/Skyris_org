@@ -1,42 +1,54 @@
-<!-- feature-diverse-expertise-advanced.svg -->
 <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Diverse Expertise Icon</title>
   <desc id="desc">An advanced illustration representing diverse expertise with interconnected gears and various tools symbolizing different skills.</desc>
   
-  <!-- Definitions for Gradients and Filters -->
+  <!-- Definitions for Gradients, Filters, and Animations -->
   <defs>
-    <!-- Radial Gradient for Gear -->
+    <!-- Gradient for Gears -->
     <radialGradient id="gearGrad" cx="50%" cy="50%" r="50%">
       <stop offset="0%" style="stop-color:#6c63ff; stop-opacity:1" />
       <stop offset="100%" style="stop-color:#3d3d5c; stop-opacity:1" />
     </radialGradient>
-    
-    <!-- Drop Shadow Filter -->
-    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
-    </filter>
-    
-    <!-- Glow Effect for Tools -->
+
+    <!-- Gradient for Tools -->
+    <linearGradient id="toolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0abff; stop-opacity:1">
+        <animate attributeName="stop-color" values="#6c63ff;#a0abff;#6c63ff" dur="3s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Glow Effect -->
     <filter id="glow" height="300%">
-      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick"/>
-      <feGaussianBlur in="thick" stdDeviation="3" result="blurred"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2" result="thick" />
+      <feGaussianBlur in="thick" stdDeviation="3" result="blurred" />
       <feMerge>
-        <feMergeNode in="blurred"/>
-        <feMergeNode in="blurred"/>
-        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="blurred" />
+        <feMergeNode in="blurred" />
+        <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
-    
-    <!-- Animated Dash Array -->
-    <animateTransform id="lineAnimate" attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite" />
+
+    <!-- Ripple Effect -->
+    <radialGradient id="rippleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff; stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#ffffff; stop-opacity:0" />
+    </radialGradient>
   </defs>
   
+  <!-- Background Ripple Animation -->
+  <g>
+    <circle cx="60" cy="60" r="40" fill="url(#rippleGrad)" opacity="0.6">
+      <animate attributeName="r" from="40" to="60" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.6;0" dur="3s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
   <!-- Background Gear -->
-  <g filter="url(#dropShadow)">
+  <g filter="url(#glow)">
     <circle cx="60" cy="60" r="30" fill="url(#gearGrad)" />
     <!-- Gear Teeth -->
     <g stroke="#ffffff" stroke-width="2" stroke-linecap="round">
-      <!-- Creating gear teeth by rotating lines around the center -->
       <line x1="60" y1="30" x2="60" y2="20" />
       <line x1="85.36" y1="34.64" x2="92.88" y2="27.12" />
       <line x1="90" y1="60" x2="100" y2="60" />
@@ -47,37 +59,40 @@
       <line x1="34.64" y1="34.64" x2="27.12" y2="27.12" />
     </g>
   </g>
-  
-  <!-- Central Tools with Glow Effect -->
+
+  <!-- Tools with Dynamic Glow -->
   <g filter="url(#glow)">
     <!-- Wrench -->
     <g transform="translate(40, 40) rotate(-30)">
-      <rect x="0" y="0" width="30" height="6" fill="#ffffff" />
+      <rect x="0" y="0" width="30" height="6" fill="url(#toolGrad)" />
       <rect x="25" y="-5" width="10" height="16" fill="#ffffff" />
-      <circle cx="35" cy="3" r="3" fill="#6c63ff" />
+      <circle cx="35" cy="3" r="3" fill="#6c63ff">
+        <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
+      </circle>
     </g>
     
     <!-- Brush -->
     <g transform="translate(80, 80) rotate(30)">
-      <rect x="0" y="0" width="30" height="6" fill="#ffffff" />
+      <rect x="0" y="0" width="30" height="6" fill="url(#toolGrad)" />
       <polygon points="25,0 35,5 25,10" fill="#ffffff" />
-      <circle cx="35" cy="5" r="3" fill="#6c63ff" />
+      <circle cx="35" cy="5" r="3" fill="#6c63ff">
+        <animate attributeName="r" values="3;5;3" dur="2.5s" repeatCount="indefinite" />
+      </circle>
     </g>
   </g>
-  
-  <!-- Additional Decorative Elements -->
-  <g opacity="0.3">
-    <!-- Dotted Circle for Depth -->
-    <circle cx="60" cy="60" r="40" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5"/>
-  </g>
-  
-  <!-- Animated Connecting Lines -->
-  <g stroke="#6c63ff" stroke-width="2" stroke-linecap="round">
+
+  <!-- Connecting Lines with Animated Glow -->
+  <g stroke="url(#toolGrad)" stroke-width="2" stroke-linecap="round">
     <line x1="60" y1="60" x2="40" y2="40" stroke-dasharray="8,4">
-      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="3s" repeatCount="indefinite" />
     </line>
     <line x1="60" y1="60" x2="80" y2="80" stroke-dasharray="8,4">
-      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="4s" repeatCount="indefinite" />
+      <animate attributeName="stroke-dasharray" values="8,4;4,8;8,4" dur="3s" repeatCount="indefinite" />
     </line>
+  </g>
+
+  <!-- Decorative Elements -->
+  <g opacity="0.3">
+    <circle cx="60" cy="60" r="50" stroke="#ffffff" stroke-width="1" fill="none" stroke-dasharray="5,5" />
   </g>
 </svg>
